@@ -102,22 +102,25 @@ const CtaSection = () => {
       {/* Decorative mockups with GSAP parallax (desktop only) */}
       <div className="absolute inset-0 pointer-events-none">
         {mockups.map((mockup, index) => (
-          <div
-            key={mockup.id}
-            ref={(el) => (mockupRefs.current[index] = el)}
-            className={`absolute hidden lg:block ${positions[index].className}`}
-            style={{ transformStyle: "preserve-3d" }}
-          >
-            <Image
-              src={mockup.src}
-              alt={mockup.alt}
-              width={256}
-              height={340}
-              className="rounded-2xl shadow-2xl"
-              priority={index < 2} // preload first two
-            />
-          </div>
-        ))}
+  <div
+    key={mockup.id}
+    ref={(el) => {
+      mockupRefs.current[index] = el;
+    }}
+    className={`absolute hidden lg:block ${positions[index].className}`}
+    style={{ transformStyle: "preserve-3d" }}
+  >
+    <Image
+      src={mockup.src}
+      alt={mockup.alt}
+      width={256}
+      height={340}
+      className="rounded-2xl shadow-2xl"
+      priority={index < 2}
+    />
+  </div>
+))}
+
       </div>
 
       {/* Main content */}
